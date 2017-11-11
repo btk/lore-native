@@ -13,6 +13,8 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
+    "week": "node task_week.js",
+    "weekdata": "pre-require weeks/json/ week_data.js",
     "test": "node node_modules/jest/bin/jest.js --watch"
   },
   "jest": {

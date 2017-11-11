@@ -17,6 +17,6 @@
         "WAKE_LOCK"
       ],
     },
-    "privacy": "unlisted"
+    "privacy": "public"
   }
 }

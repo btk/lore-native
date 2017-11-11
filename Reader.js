@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, Dimensions, RefreshControl, Animated, Easing } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+import weekData from './week_data.js';
+
 const ANIMTIMING = 500;
 import API from './api';
 
@@ -74,7 +76,7 @@ export default class App extends React.Component {
             />
           }
           style={styles.content}>
-            <Text>EYYY, its the {this.state.currentWeek}th week</Text>
+            <Text>{weekData["week1_json"].content}</Text>
           </ScrollView>
         </Animated.View>
         <Animated.View style={[styles.backgroundDiv,  { opacity: this.state.slideAnim.interpolate({inputRange: [0, 1], outputRange: [1, 0]})}]}>

@@ -1,17 +1,17 @@
 {
   "expo": {
     "sdkVersion": "22.0.0",
-    "slug": "6hafta",
-    "name": "6Hafta",
+    "slug": "cuphead",
+    "name": "Cuphead Lore",
     "version": "1.0.0",
     "orientation": "portrait",
     "ios": {
-      "bundleIdentifier": "com.6hafta.saglikliyasam",
+      "bundleIdentifier": "com.lore.cuphead",
       "icon": "./data/images/iconCornered1024.png",
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "com.6hafta.saglikliyasam",
+      "package": "com.lore.cuphead",
       "versionCode": 100,
       "permissions": [
         "WAKE_LOCK"

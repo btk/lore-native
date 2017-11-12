@@ -3,11 +3,16 @@
     "sdkVersion": "22.0.0",
     "slug": "cuphead",
     "name": "Cuphead Lore",
+    "icon": "./appicon.png",
     "version": "1.0.0",
     "orientation": "portrait",
+    "splash": {
+      "image": "./splash.png",
+      "backgroundColor": "#F4F1E8"
+    },
     "ios": {
       "bundleIdentifier": "com.lore.cuphead",
-      "icon": "./data/images/iconCornered1024.png",
+      "icon": "./appicon.png",
       "buildNumber": "1.0.0"
     },
     "android": {
@@ -17,6 +22,6 @@
         "WAKE_LOCK"
       ],
     },
-    "privacy": "public"
+    "privacy": "unlisted"
   }
 }

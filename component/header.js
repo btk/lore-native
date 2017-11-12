@@ -21,14 +21,14 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <View style={styles.menu}>
           <TouchableOpacity style={styles.menuItemCarrier} onPress={() => this.switchScreen("home")}>
-            <Text style={[styles.menuItem, {opacity: (this.state.currentScreen == "home")?1:0.6}]}>Anasayfa</Text>
+            <Text style={[styles.menuItem, {opacity: (this.state.currentScreen == "home")?1:0.6}]}>Topics</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.menuItemCarrier} onPress={() => this.switchScreen("program")}>
-            <Text style={[styles.menuItem, {opacity: (this.state.currentScreen == "program")?1:0.6}]}>Program</Text>
+            <Text style={[styles.menuItem, {opacity: (this.state.currentScreen == "program")?1:0.6}]}>More Lore Apps</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.icon}>
-          <Ionicons name="ios-settings" size={30} color="#666" />
+          <Ionicons name="ios-settings" size={30} color="#999" />
         </View>
       </View>
     );
@@ -37,12 +37,12 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    borderBottomColor: "rgba(0,0,0,0.1)",
+    borderBottomColor: "rgba(0,0,0,0.5)",
     borderBottomWidth: 1,
     height: 65,
     paddingTop: Constants.statusBarHeight,
     width: "100%",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#101010",
     alignItems: "center",
     justifyContent: "space-between",
     flexDirection: "row"
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   },
   menuItem: {
     paddingHorizontal: 12,
+    color: "#fff",
     fontSize: 16,
     fontWeight: "600",
     opacity: 0.6

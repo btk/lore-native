@@ -1,5 +1,5 @@
 {
-  "name": "6hafta-native",
+  "name": "lore-native",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -13,7 +13,7 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "asset": "mkdir data; pre-require assets/ data/preview.js; pre-require assets/images data/images.js; pre-require assets/contents data/contents.js",
+    "asset": "cd assets; pre-require images images.js; pre-require contents contents.js",
     "test": "node node_modules/jest/bin/jest.js --watch"
   },
   "jest": {

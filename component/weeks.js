@@ -7,29 +7,8 @@ import API from '../api';
 export default class App extends React.Component {
   render() {
     return (
-      <ScrollView horizontal={true} style={styles.container}>
-        <View style={{width: 5}}></View>
-        <TouchableOpacity onPress={() => API.event.emit("reader", 1)}>
-          <View style={[styles.item, styles.itemActive]}>
-            <Text style={styles.haftaText}>1. Hafta</Text>
-            <Text style={styles.haftaTitle}>Hazırlık</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => API.event.emit("reader", 2)}>
-          <View style={[styles.item, styles.itemActive]}>
-            <Text style={styles.haftaText}>2. Hafta</Text>
-            <Text style={styles.haftaTitle}>Başlangıç</Text>
-          </View>
-        </TouchableOpacity>
-        <View style={styles.item}>
-          <Text style={styles.haftaText}>3. Hafta</Text>
-          <Text style={styles.haftaTitle}>Sıfırlama</Text>
-        </View>
-        <View style={styles.item}>
-          <Text style={styles.haftaText}>4. Hafta</Text>
-          <Text style={styles.haftaTitle}>Değişim</Text>
-        </View>
-      </ScrollView>
+      <View>
+      </View>
     );
   }
 }

@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, RefreshControl } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, RefreshControl, StatusBar } from 'react-native';
 
 import Header from './component/header';
 import Reader from './Reader';
 import Switch from './Switch';
+import Ads from './Ads';
 
 export default class App extends React.Component {
   state = {
@@ -27,11 +28,15 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+          <StatusBar
+            backgroundColor="#101010"
+            barStyle="light-content"/>
         <View style={{flex: 1}}>
           <Header switchTo={this.switchScreen.bind(this)}/>
           <Switch id={this.state.currentScreen}/>
         </View>
         <Reader/>
+        <Ads/>
       </View>
     );
   }
@@ -40,6 +45,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(250,250,250,1)',
+    backgroundColor: "#1e1e1e"
+    /*backgroundColor: 'rgba(250,250,250,1)',*/
   }
 });

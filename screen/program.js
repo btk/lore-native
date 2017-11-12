@@ -6,7 +6,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View>
-        <Text>This is program Screen1</Text>
+        <Text style={{fontSize: 18, color: "#fff", padding: 10}}>To get more lore apps, go to our google play store listing.</Text>
       </View>
     );
   }

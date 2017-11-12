@@ -1,17 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, Image, View, ScrollView, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+
+import API from '../api';
+
+import Card from './card';
+import Preview from '../assets/preview.json';
+import Images from '../assets/images.js';
 
 export default class App extends React.Component {
   render() {
     return (
-      <View>
-        <View style={styles.item}><Text>a</Text></View>
-        <View style={styles.item}><Text>b</Text></View>
-        <View style={styles.item}><Text>c</Text></View>
-        <View style={styles.item}><Text>d</Text></View>
-        <View style={styles.item}><Text>e</Text></View>
-        <View style={styles.item}><Text>f</Text></View>
+      <View style={styles.container}>
+        {
+          Preview.map((p, i) => {
+            return (<Card key={i} post={p}/>);
+          })
+        }
       </View>
     );
   }
@@ -19,13 +24,8 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  },
-  item: {
     flex: 1,
-    margin: 5,
-    height: 100,
-    borderWidth: 1,
-    borderColor: "#eee"
+    flexWrap: "wrap",
+    flexDirection: "row"
   }
 });

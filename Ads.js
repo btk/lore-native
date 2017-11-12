@@ -33,7 +33,9 @@ export default class App extends React.Component {
     API.event.on("ads", data => {
       console.log("Triggered Ads: ", data);
       if(data == "interstitial"){
-        this.displayInterstitial();
+        setTimeout(() => {
+          this.displayInterstitial();
+        }, 3000);
       }
       if(data == "rewardedVid"){
         this.displayRewardedVid();

@@ -36,6 +36,11 @@ export default class App extends React.Component {
       this.nextTopic = "";
       if(nextT.length){
         this.nextTopic = nextT[0];
+        if(this.nextTopic.thumb){
+          this.nextTopicThumb = Images[this.nextTopic.thumb.replace(".", "_")];
+        }else{
+          this.nextTopicThumb = require("./appicon.png");
+        }
       }
       if(toWeek > 3){
         API.event.emit("ads", "interstitial");
@@ -91,7 +96,12 @@ export default class App extends React.Component {
 
   renderReader() {
     let contentObj = Contents["p"+this.state.currentWeek+"_json"];
-    let thumbImage = Images[contentObj.images[0].replace(".", "_")];
+    let thumbImage;
+    if(contentObj.images[0]){
+      thumbImage = Images[contentObj.images[0].replace(".", "_")];
+    }else{
+      thumbImage = require("./appicon.png");
+    }
     return (
       <View style={styles.container}>
         <Animated.View style={[styles.readerCarrier,  {transform: [{translateX: this.state.slideAnim.interpolate({inputRange: [0, 1], outputRange: [0, size.width]})}]}]}>
@@ -118,7 +128,7 @@ export default class App extends React.Component {
 
             {(this.nextTopic != "") &&
               <View style={styles.imageCarrier}>
-                <Image source={Images[this.nextTopic.thumb.replace(".", "_")]} style={{width: size.width, height: size.height / 3, resizeMode: "cover"}}/>
+                <Image source={this.nextTopicThumb} style={{width: size.width, height: size.height / 3, resizeMode: "cover"}}/>
                 <LinearGradient
                   colors={['#1e1e1e', 'transparent']}
                   style={styles.coverTop}/>

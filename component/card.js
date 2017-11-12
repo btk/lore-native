@@ -16,10 +16,15 @@ import Images from '../assets/images.js';
 
 export default class App extends React.Component {
   render() {
+    if(this.props.post.thumb){
+      this.postThumb = Images[this.props.post.thumb.replace(".", "_")];
+    }else{
+      this.postThumb = require("../appicon.png");
+    }
     return (
       <TouchableOpacity onPress={() => API.event.emit("reader", this.props.post.id)}>
         <View style={styles.item}>
-          <Image source={Images[this.props.post.thumb.replace(".", "_")]} style={styles.image}/>
+          <Image source={this.postThumb} style={styles.image}/>
           <LinearGradient
             colors={['transparent', '#101010']}
             style={{

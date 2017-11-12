@@ -1,8 +1,8 @@
 {
   "expo": {
     "sdkVersion": "22.0.0",
-    "slug": "cuphead",
-    "name": "Cuphead Lore",
+    "slug": "transistor",
+    "name": "Transistor Lore",
     "icon": "./appicon.png",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,12 +11,12 @@
       "backgroundColor": "#F4F1E8"
     },
     "ios": {
-      "bundleIdentifier": "com.lore.cuphead",
+      "bundleIdentifier": "com.lore.transistor",
       "icon": "./appicon.png",
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "com.lore.cuphead",
+      "package": "com.lore.transistor",
       "versionCode": 100,
       "permissions": [
         "WAKE_LOCK"

@@ -4,7 +4,7 @@
     "slug": "transistor",
     "name": "Transistor Lore",
     "icon": "./appicon.png",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "splash": {
       "image": "./splash.png",
@@ -13,11 +13,11 @@
     "ios": {
       "bundleIdentifier": "com.lore.transistor",
       "icon": "./appicon.png",
-      "buildNumber": "1.0.0"
+      "buildNumber": "1.0.1"
     },
     "android": {
       "package": "com.lore.transistor",
-      "versionCode": 100,
+      "versionCode": 101,
       "permissions": [
         "WAKE_LOCK"
       ],

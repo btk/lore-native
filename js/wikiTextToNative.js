@@ -57,7 +57,9 @@ export function wikiTextToNative(wikiText, images){
 	wikiText = patternMatch(wikiText, "{", "}", "");
 	wikiText = patternMatch(wikiText, "[[File:", "]]", "");
 	wikiText = patternMatch(wikiText, "[http", "]", "{$1}");
+	wikiText = patternMatch(wikiText, "'''''", "'''''", "{$1}");
 	wikiText = patternMatch(wikiText, "'''", "'''", "{$1}");
+	wikiText = patternMatch(wikiText, '""""', '""""', "{$1}");
 	wikiText = patternMatch(wikiText, '""', '""', "{$1}");
 	wikiText = patternMatch(wikiText, "<b>", "</b>", "{$1}");
 	wikiText = patternMatch(wikiText, "<i>", "</i>", "{$1}");

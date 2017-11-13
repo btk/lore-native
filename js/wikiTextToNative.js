@@ -9,7 +9,9 @@ String.prototype.replaceAll = function(search, replacement) {
 };
 
 function patternMatch(string, start, end, change){
+  let originalChange = change;
 	string.split(start).forEach((stringMatchSplit, i) => {
+    change = originalChange;
 		if(i >= 1){
 			let mid = stringMatchSplit.split(end)[0];
 			if(mid.includes("//")){
@@ -19,6 +21,9 @@ function patternMatch(string, start, end, change){
 			}
 			if(change == "{[[$1]]}" && mid.includes("|")){
 				change = mid.split("|")[1];
+        if(mid[0] == "F" && mid[1] == "i" && mid[1] == "l" && mid[1] == "e" && mid[1] == ":"){
+          change = "";
+        }
 			}else if(change == "{[[$1]]}"){
 				change = mid;
 			}
@@ -41,6 +46,17 @@ function rmWS(text){
 	}
 }
 
+function rmShortBetween(string, start, end){
+	string.split(start).forEach((stringMatchSplit, i) => {
+		if(i >= 1){
+			let mid = stringMatchSplit.split(end)[0];
+			if(!mid.includes(" ")){
+        string = string.replace(start + mid + end, "");
+			}
+		}
+	});
+	return string;
+}
 
 export function wikiTextToNative(wikiText, images){
 	nativeArray = [];
@@ -51,8 +67,9 @@ export function wikiTextToNative(wikiText, images){
 	wikiText = wikiText.replaceAll("<refrences />", "");
 	wikiText = patternMatch(wikiText, "<gallery", "</gallery>", "");
 	wikiText = patternMatch(wikiText, "<nowiki>", "</nowiki>", "");
-	wikiText = patternMatch(wikiText, "<nowiki>", "</nowiki>", "");
 	wikiText = patternMatch(wikiText, "{{Quote", "}}", "§Quote: {$1}\n");
+  wikiText = rmShortBetween(wikiText, "{{{", "}}}");
+  wikiText = rmShortBetween(wikiText, "{{", "}}");
 	wikiText = patternMatch(wikiText, "{{", "}}", "");
 	wikiText = patternMatch(wikiText, "{", "}", "");
 	wikiText = patternMatch(wikiText, "[[File:", "]]", "");
@@ -91,6 +108,10 @@ export function wikiTextToNative(wikiText, images){
 						<Text style={[styles.quoteText, {color: "#aaa", fontStyle: "italic", textAlign: "right"}]}>{text.split("|")[3]}</Text>
 					}
 				</View>
+			);
+		}else if(text.includes("====")){
+			nativeArray.push(
+				<Text key={i} style={styles.h3}>{rmWS(text.replaceAll("====", ""))}</Text>
 			);
 		}else if(text.includes("===")){
 			nativeArray.push(

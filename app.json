@@ -1,23 +1,23 @@
 {
   "expo": {
     "sdkVersion": "22.0.0",
-    "slug": "rememberme",
-    "name": "Remember Me Lore",
+    "slug": "hollowknight",
+    "name": "Hollow Knight",
     "icon": "./appicon.png",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "splash": {
       "image": "./splash.png",
       "backgroundColor": "#F4F1E8"
     },
     "ios": {
-      "bundleIdentifier": "com.lore.rememberme",
+      "bundleIdentifier": "com.lore.hollowknight",
       "icon": "./appicon.png",
-      "buildNumber": "1.0.2"
+      "buildNumber": "1.0.3"
     },
     "android": {
-      "package": "com.lore.rememberme",
-      "versionCode": 102,
+      "package": "com.lore.hollowknight",
+      "versionCode": 103,
       "permissions": [
         "WAKE_LOCK"
       ],

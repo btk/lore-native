@@ -10,27 +10,31 @@ String.prototype.replaceAll = function(search, replacement) {
 
 function patternMatch(string, start, end, change){
   let originalChange = change;
-	string.split(start).forEach((stringMatchSplit, i) => {
-    change = originalChange;
-		if(i >= 1){
-			let mid = stringMatchSplit.split(end)[0];
-			if(mid.includes("//")){
-				change = mid.replaceAll(mid.split(" ")[0] + " ", "");
-			}else{
-				change = change.replace("{$1}", mid);
-			}
-			if(change == "{[[$1]]}" && mid.includes("|")){
-				change = mid.split("|")[1];
-        if(mid[0] == "F" && mid[1] == "i" && mid[1] == "l" && mid[1] == "e" && mid[1] == ":"){
-          change = "";
-        }
-			}else if(change == "{[[$1]]}"){
-				change = mid;
-			}
-			string = string.replace(start + mid + end, change);
-		}
-	});
-	return string;
+  if(string.includes(start)){
+  	string.split(start).forEach((stringMatchSplit, i) => {
+      change = originalChange;
+  		if(i >= 1){
+  			let mid = stringMatchSplit.split(end)[0];
+  			if(mid.includes("//")){
+  				change = mid.replaceAll(mid.split(" ")[0] + " ", "");
+  			}else{
+  				change = change.replace("{$1}", mid);
+  			}
+  			if(change == "{[[$1]]}" && mid.includes("|")){
+  				change = mid.split("|")[1];
+          if(mid[0] == "F" && mid[1] == "i" && mid[1] == "l" && mid[1] == "e" && mid[1] == ":"){
+            change = "";
+          }
+  			}else if(change == "{[[$1]]}"){
+  				change = mid;
+  			}
+  			string = string.replace(start + mid + end, change);
+  		}
+  	});
+  	return patternMatch(string, start, end, change);
+  }else{
+    return string;
+  }
 }
 
 
@@ -61,6 +65,7 @@ function rmShortBetween(string, start, end){
 export function wikiTextToNative(wikiText, images){
 	nativeArray = [];
 	// check quote
+  wikiText = wikiText.split("__NO")[0];
 	wikiText = wikiText.replaceAll("==Gallery==", "").replaceAll("== Gallery ==", "");
 	wikiText = wikiText.replaceAll("{{{PAGENAME}}}", "").replaceAll("{{PAGENAME}}", "");
 	wikiText = wikiText.replaceAll("undefined\n", "");
@@ -68,11 +73,9 @@ export function wikiTextToNative(wikiText, images){
 	wikiText = patternMatch(wikiText, "<gallery", "</gallery>", "");
 	wikiText = patternMatch(wikiText, "<nowiki>", "</nowiki>", "");
 	wikiText = patternMatch(wikiText, "{{Quote", "}}", "§Quote: {$1}\n");
-  wikiText = rmShortBetween(wikiText, "{{{", "}}}");
-  wikiText = rmShortBetween(wikiText, "{{", "}}");
-	wikiText = patternMatch(wikiText, "{{", "}}", "");
-	wikiText = patternMatch(wikiText, "{", "}", "");
 	wikiText = patternMatch(wikiText, "[[File:", "]]", "");
+  wikiText = patternMatch(wikiText, "{| class", "|}", "");
+  wikiText = patternMatch(wikiText, "{| style", "|}", "");
 	wikiText = patternMatch(wikiText, "[http", "]", "{$1}");
 	wikiText = patternMatch(wikiText, "'''''", "'''''", "{$1}");
 	wikiText = patternMatch(wikiText, "'''", "'''", "{$1}");
@@ -82,8 +85,13 @@ export function wikiTextToNative(wikiText, images){
 	wikiText = patternMatch(wikiText, "<i>", "</i>", "{$1}");
 	wikiText = patternMatch(wikiText, "<ref>", "</ref>", "");
 	wikiText = patternMatch(wikiText, "<", ">", "");
+  wikiText = rmShortBetween(wikiText, "{{{", "}}}");
+  wikiText = rmShortBetween(wikiText, "{{", "}}");
+	wikiText = patternMatch(wikiText, "{{", "}}", "");
+  wikiText = patternMatch(wikiText, "{", "}", "");
 	wikiText = patternMatch(wikiText, "[[", "]]", "{[[$1]]}");
-
+  wikiText = wikiText.split("Category:")[0];
+  wikiText = wikiText.split("ru:")[0];
 
 
 	wikiText = wikiText.replaceAll("\n\n\n", "\n").replaceAll("\n\n", "\n");
@@ -123,11 +131,13 @@ export function wikiTextToNative(wikiText, images){
 			);
 		}else{
 			if(text){
-				nativeArray.push(
-					<View key={i} style={styles.p}>
-						<Text style={styles.text}>{rmWS(text)}</Text>
-					</View>
-				);
+        if(!text.includes("|")){
+  				nativeArray.push(
+  					<View key={i} style={styles.p}>
+  						<Text style={styles.text}>{rmWS(text)}</Text>
+  					</View>
+  				);
+        }
 			}
 		}
 		let jumpLength = Math.floor(wikiTextLines.length / images.length);

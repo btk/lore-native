@@ -1,23 +1,23 @@
 {
   "expo": {
     "sdkVersion": "22.0.0",
-    "slug": "hollowknight",
-    "name": "Hollow Knight",
+    "slug": "oriblindforest",
+    "name": "Ori and the Blind Forest Lore",
     "icon": "./appicon.png",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "orientation": "portrait",
     "splash": {
       "image": "./splash.png",
       "backgroundColor": "#F4F1E8"
     },
     "ios": {
-      "bundleIdentifier": "com.lore.hollowknight",
+      "bundleIdentifier": "com.lore.oriblindforest",
       "icon": "./appicon.png",
-      "buildNumber": "1.0.3"
+      "buildNumber": "1.0.4"
     },
     "android": {
-      "package": "com.lore.hollowknight",
-      "versionCode": 103,
+      "package": "com.lore.oriblindforest",
+      "versionCode": 104,
       "permissions": [
         "WAKE_LOCK"
       ],

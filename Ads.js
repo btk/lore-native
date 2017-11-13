@@ -23,9 +23,9 @@ export default class App extends React.Component {
   componentWillMount(){
     let interstitialUnitID = null;
     if(Platform.OS === "ios"){
-      interstitialUnitID = "ca-app-pub-3602356900147773/2735905482";
+      interstitialUnitID = "ca-app-pub-3602356900147773/4406233891";
     }else{
-      interstitialUnitID = "ca-app-pub-3602356900147773/2735905482";
+      interstitialUnitID = "ca-app-pub-3602356900147773/4406233891";
     }
     AdMobInterstitial.setAdUnitID(interstitialUnitID);
     AdMobInterstitial.setTestDeviceID('EMULATOR');

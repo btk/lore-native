@@ -3,4 +3,4 @@ node_modules/
 npm-debug.*
 assets/*
 data/*
-lore/cuphead/*
+lore/cuphead/**

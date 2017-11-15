@@ -1,23 +1,23 @@
 {
   "expo": {
     "sdkVersion": "22.0.0",
-    "slug": "oriblindforest",
-    "name": "Ori and the Blind Forest Lore",
+    "slug": "bastion",
+    "name": "Bastion Lore",
     "icon": "./appicon.png",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "orientation": "portrait",
     "splash": {
       "image": "./splash.png",
       "backgroundColor": "#F4F1E8"
     },
     "ios": {
-      "bundleIdentifier": "com.lore.oriblindforest",
+      "bundleIdentifier": "com.lore.bastion",
       "icon": "./appicon.png",
-      "buildNumber": "1.0.4"
+      "buildNumber": "1.0.5"
     },
     "android": {
-      "package": "com.lore.oriblindforest",
-      "versionCode": 104,
+      "package": "com.lore.bastion",
+      "versionCode": 105,
       "permissions": [
         "WAKE_LOCK"
       ],

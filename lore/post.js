@@ -7,7 +7,7 @@ var path = require('path');
 
 
 const folder = "cuphead";
-const nameApp = "Hallow Knight"
+const nameApp = "General"
 let contentPrev = [];
 var listOfLinks = fs.readFileSync("linklist.txt",'utf8').split("\n");
 
